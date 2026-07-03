@@ -84,7 +84,7 @@ return new class extends Migration
                 $table->uuid($teamKey)->nullable();
                 $table->index($teamKey, 'model_has_permissions_school_id_index');
 
-                $table->primary([$teamKey, $pivotPermission, $modelKey, 'model_type'], 'model_has_permissions_permission_model_type_primary');
+                $table->unique([$teamKey, $pivotPermission, $modelKey, 'model_type'], 'model_has_permissions_permission_model_type_unique');
             } else {
                 $table->primary([$pivotPermission, $modelKey, 'model_type'], 'model_has_permissions_permission_model_type_primary');
             }
@@ -106,7 +106,7 @@ return new class extends Migration
                 $table->uuid($teamKey)->nullable();
                 $table->index($teamKey, 'model_has_roles_school_id_index');
 
-                $table->primary([$teamKey, $pivotRole, $modelKey, 'model_type'], 'model_has_roles_role_model_type_primary');
+                $table->unique([$teamKey, $pivotRole, $modelKey, 'model_type'], 'model_has_roles_role_model_type_unique');
             } else {
                 $table->primary([$pivotRole, $modelKey, 'model_type'], 'model_has_roles_role_model_type_primary');
             }
